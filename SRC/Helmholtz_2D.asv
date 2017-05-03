@@ -4,7 +4,7 @@
 
 
 %Region for the Helmholtz Equation
-n=input( 'Input value of n:');
+n=input( 'Input value of n
 a_x= -pi;
 b_x= pi;
 a_y= -pi;
@@ -33,8 +33,7 @@ y= linspace(a_y,b_y,n);
  
      u(n,j)= y(j)*(y(j)-a_y)^2;
  end 
-
- 
+        
  
  
  
