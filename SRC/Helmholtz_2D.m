@@ -42,23 +42,30 @@ y= linspace(a_y,b_y,n);
  
  %Gauss Seidel Iterations
  error=1;
-while max(max(error)) > 1e-6 
- u_0=u;
+ iteration=0;
+%  
+while error(:)>=1e-6
+% while iteration < 5
+    iteration=iteration+1;
+    u_0=u;
  for i=2:n-1
      for j=2:n-1
           F(i,j)= cos((pi/2)*(2*((x(i)-a_x)/(b_x-a_x))+1))*sin((pi*y(j)-a_y)/(b_y-a_y));
-    %     F(i,j)=0;
-         u(i,j)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j-1)));
+          u(i,j)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j-1)));
      end 
-     u(i,n)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1))); 
+    u(i,n)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1))); 
  end 
-     error= abs((u_0-u)./(u));
+ u_f=u;
+     error= abs (u_f.\(u_f-u_0));
+    
 end 
+iteration
+
 
 surf(x,y,u)
-% figure
-% contourf(u)
-%      
+figure
+contourf(u)
+     
  
  
  
