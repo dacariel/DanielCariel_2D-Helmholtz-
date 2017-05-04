@@ -14,8 +14,8 @@ x= linspace(a_x,b_y,n);
 y= linspace(a_y,b_y,n);
 
 %Discretization Coefficients
-   gamma= pi;
-   h= (b_x)/n;
+   gamma= -3.14;
+   h= (2*b_x)/n;
    
  
    
