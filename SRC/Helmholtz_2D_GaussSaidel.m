@@ -1,7 +1,7 @@
 %   2D Helmholtz Equation
 %   Daniel Cariel
 %   This code solves the 2D Helmholtz equation for a rectangular region. The surface is affected by three Dirishlet boundary conditions and a Neuman boundary condition at the bottom edge.  
-%   This code utilizes Gauss Saidel elimination to approximate the solution
+%   This code utilizes Gauss Saidel iteration to approximate the solution
 %   of the problem. 
 %SURFACE REGION FOR HELMHOLTZ EQUATION 
 clc; clear all;

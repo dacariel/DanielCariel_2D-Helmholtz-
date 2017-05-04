@@ -101,4 +101,4 @@ surf(x,y,u,'EdgeColor','none')
 xlabel('X Number of Nodes in X-direction','fontSize',11); %3D figure lable on the x axis
 ylabel('Y Number of Nodes in Y-direction','fontSize',11); %3D figure lable on the y axis
 zlabel('Position U','fontSize',12);                       %3D figure lable on the z axis
-title('2D Helmholtz Solution -  Gauss Seidel Numerical Solver');
+title('2D Helmholtz Solution -  Gauss Seidel with Successive Over Relaxation');
