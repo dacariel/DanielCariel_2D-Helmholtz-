@@ -14,17 +14,8 @@ x= linspace(a_x,b_y,n);
 y= linspace(a_y,b_y,n);
 
 %Discretization Coefficients
-   gamma= 0;
+   gamma= pi;
    h= (2*b_x)/n;
-   
- 
-   
- 
- 
- 
-% Boundary Conditions
- 
- 
  
 %  GAUSS SEIDEL NUMERICAL SOLVER 
  
@@ -37,8 +28,6 @@ y= linspace(a_y,b_y,n);
     u(n,:)= ((y(:)-a_y).^2).*cos(pi.*(y(:)/a_y));
  
     u(1,:)= y(:).*(y(:)-a_y).^2;
-
-
 
  %Gauss Seidel Iterations
  error=1;
