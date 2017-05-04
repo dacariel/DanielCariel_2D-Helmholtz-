@@ -5,7 +5,7 @@
 
 %Region for the Helmholtz Equation
 clc; clear all;
-n=input( 'Input value of n:');
+n=input('Input value of n:');
 a_x= -pi;
 b_x= pi;
 a_y= -pi;
@@ -14,7 +14,7 @@ x= linspace(a_x,b_y,n);
 y= linspace(a_y,b_y,n);
 
 %Discretization Coefficients
-   gamma= pi;
+   gamma= 0;
    h= (2*b_x)/n;
  
 %  GAUSS SEIDEL NUMERICAL SOLVER 
