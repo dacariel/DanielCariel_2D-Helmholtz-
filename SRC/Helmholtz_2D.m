@@ -15,6 +15,7 @@ y= linspace(a_y,b_y,n);
 
 %Discretization Coefficients
    gamma= pi;
+
    h= (2*b_x)/n;
  
 %  GAUSS SEIDEL NUMERICAL SOLVER 
@@ -23,6 +24,7 @@ y= linspace(a_y,b_y,n);
  
  %Boundary Conditions
     %Dirishlet 
+
     u(:,1)= b_y.*((b_y-a_y).^2)+ ((x(:)-a_x)./(b_x-a_x)).*(((b_y-a_y).^2).*cos(pi.*(b_y/a_y))-b_y.*(b_y-a_y).^2);
 
     u(n,:)= ((y(:)-a_y).^2).*cos(pi.*(y(:)/a_y));
@@ -30,13 +32,13 @@ y= linspace(a_y,b_y,n);
     u(1,:)= y(:).*(y(:)-a_y).^2;
 
  %Gauss Seidel Iterations
+
  error=1; u
  iteration=0;
 
 % while max(error(:))>=1e-6
 while iteration < 5000
     
-
    
   iteration=iteration+1;
   u_0=u;
@@ -48,6 +50,7 @@ while iteration < 5000
         u(i,n)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1))); 
     end
      u_f=u;
+
       error= abs((u_f-u_0)./(u_f))
 
 end 
@@ -59,3 +62,6 @@ figure(1)
 surf(x,y,u)
 figure(2)
 contourf(u)
+
+     
+
