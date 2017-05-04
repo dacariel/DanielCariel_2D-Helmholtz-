@@ -14,7 +14,7 @@ x= linspace(a_x,b_y,n);
 y= linspace(a_y,b_y,n);
 
 %Discretization Coefficients
-   gamma= -3.14;
+   gamma= 0;
    h= (2*b_x)/n;
    
  
@@ -39,13 +39,14 @@ y= linspace(a_y,b_y,n);
     u(1,:)= y(:).*(y(:)-a_y).^2;
 
 
- 
+
  %Gauss Seidel Iterations
  error=1;
  iteration=0;
 
-while max(max(error))>=1e-6
-% while iteration < 100
+while max(error(:))>=1e-6
+% while iteration < 30
+
    
   iteration=iteration+1;
   u_0=u;
@@ -57,7 +58,7 @@ while max(max(error))>=1e-6
         u(i,n)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1))); 
     end
      u_f=u;
-     error= abs(u_f-u_0)./(u_f)
+     error= abs((u_f-u_0)./(u_f))
 
 end 
 
