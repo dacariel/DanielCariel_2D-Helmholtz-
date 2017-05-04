@@ -14,18 +14,19 @@ x= linspace(a_x,b_y,n); %x vector describing nodes in the x-axis
 y= linspace(a_y,b_y,n); %y vector describing nodes in the y-axis
 
 %Discretization Coefficients and initial guess 
-gamma=0;      %Wave constant 
+gamma=-1;      %Wave constant 
 h= (2*b_x)/n; %Discretization step
 u= zeros(n);  %Initial guess for gauss seidel approximation 
 
 %%BOUNDARY CONDITIONS
 %Dirishlet:
 
-u(:,1)= b_y.*((b_y-a_y).^2)+ ((x(:)-a_x)./(b_x-a_x)).*(((b_y-a_y).^2).*cos(pi.*(b_y/a_y))-b_y.*(b_y-a_y).^2); %Boundary condition at the left edge of the prescribed region
+u(1,:)= b_y.*((b_y-a_y).^2)+ ((x(:)-a_x)./(b_x-a_x)).*(((b_y-a_y).^2).*cos(pi.*(b_y/a_y))-b_y.*(b_y-a_y).^2); %Boundary condition at the top edge of the prescribed region
 
-u(n,:)= ((y(:)-a_y).^2).*cos(pi.*(y(:)/a_y)); %Boundary condition at the 
+u(:,1)= y(:).*(y(:)-a_y).^2; %Boundary condition at the left edge of the prescribed region 
+
+u(:,n)= ((y(:)-a_y).^2).*cos(pi.*(y(:)/a_y)); %Boundary condition at the right edge of the prescribed region 
  
-u(1,:)= y(:).*(y(:)-a_y).^2; %Boundary condition at the top edge of the prescribed region 
 
 %GAUSS SEIDEL ITERATIONS
 F=zeros(n); %Initia matrix for the forcing function of in the Helmholtz Equation 
@@ -39,13 +40,12 @@ while max(error(:))>=1e-6   %Gauss Seidel iterations will continue until the err
         for j=2:n-1
           F(i,j)= cos((pi/2)*(2*((x(i)-a_x)/(b_x-a_x))+1))*sin((pi*y(j)-a_y)/(b_y-a_y));    %Forcing function describing the problem 
           u(i,j)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j-1))); % Discretization solution of the 2D Helmholtz equation
+          u(n,j)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1)));  %Neumann boundary condition applied to the bottom edge of the prescribed region 
         end 
-        u(i,n)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1)));   %Neumann boundary condition applied to the bottom edge of the prescribed region 
     end
      u_f=u;                             %Solution of u from most recent iteration. It is compared with the previous iteration to calculate the error
      error= abs((u_f-u_0)./(u_f));      %Error calculation. The error drives the Gauss Seidel solver until tolerance is reached
 end 
-
 
 %PLOT OF THE RESULTS
 % 2D contour of the surface
