@@ -50,7 +50,7 @@ ylabel('Y Number of Nodes in Y-direction','fontSize',11); %3D figure lable on th
 title('Gauss Seidel for Helmhotlz') 
 % 3D surface graph of the solution 
 figure
-mesh(x,y,u,'EdgeColor','none')
+mesh(x,y,u)
 xlabel('X Number of Nodes in X-direction','fontSize',11); %3D figure lable on the x axis
 ylabel('Y Number of Nodes in Y-direction','fontSize',11); %3D figure lable on the y axis
 zlabel('Position U','fontSize',12);                       %3D figure lable on the z axis
