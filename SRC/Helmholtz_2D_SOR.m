@@ -14,7 +14,7 @@ x= linspace(a_x,b_y,n); %x vector describing nodes in the x-axis
 y= linspace(a_y,b_y,n); %y vector describing nodes in the y-axis
 
 %Discretization Coefficients and initial guess 
-gamma=0;    %Wave constant 
+gamma=-pi;    %Wave constant 
 h= (2*b_x)/n; %Discretization step
 u= zeros(n);  %Initial guess for gauss seidel approximation 
 B= 1.5;       %Betta for over relaxation 
@@ -97,7 +97,7 @@ ylabel('Y Number of Nodes in Y-direction','fontSize',11); %3D figure lable on th
 title('Gauss Seidel for Helmhotlz') 
 % 3D surface graph of the solution 
 figure
-mesh(x,y,u,'EdgeColor','none')
+mesh(x,y,u)
 xlabel('X Number of Nodes in X-direction','fontSize',11); %3D figure lable on the x axis
 ylabel('Y Number of Nodes in Y-direction','fontSize',11); %3D figure lable on the y axis
 zlabel('Position U','fontSize',12);                       %3D figure lable on the z axis
