@@ -14,7 +14,7 @@ x= linspace(a_x,b_y,n); %x vector describing nodes in the x-axis
 y= linspace(a_y,b_y,n); %y vector describing nodes in the y-axis
 
 %Discretization Coefficients and initial guess 
-gamma=0;    %Wave constant 
+gamma=-pi;    %Wave constant 
 h= (2*b_x)/n; %Discretization step
 u= zeros(n);  %Initial guess for gauss seidel approximation 
 B= 1.5;       %Betta for over relaxation 

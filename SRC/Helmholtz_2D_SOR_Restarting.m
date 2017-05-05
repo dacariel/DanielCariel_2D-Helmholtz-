@@ -31,7 +31,7 @@ while max(error(:))>=1e-6   %Gauss Seidel iterations will continue until the err
   
     for i=2:n-1
         for j=2:n-1
-          F(i,j)= cos((pi/2)*(2*((x(i)-a_x)/(b_x-a_x))+1))*sin((pi*y(j)-a_y)/(b_y-a_y));    %Forcing function describing the problem 
+%           F(i,j)= cos((pi/2)*(2*((x(i)-a_x)/(b_x-a_x))+1))*sin((pi*y(j)-a_y)/(b_y-a_y));    %Forcing function describing the problem 
           u(i,j)= (B/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j-1)))+(1-B).*u(i,j); % Discretization solution of the 2D Helmholtz equation
           u(n,j)= (1/((gamma*h^2)-4))*((h^2)*F(i,j)-(u(i+1,j)+u(i-1,j)+u(i,j+1)+u(i,j+1)));  %Neumann boundary condition applied to the bottom edge of the prescribed region 
         end 
